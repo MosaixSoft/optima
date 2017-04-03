@@ -62,7 +62,7 @@ Install the Optima CLI to a system from where you want to launch Optima commands
 
   ```
   $ wget <URL-to-optima-CLI-installation-package>
-  $ tar -xzvf cli-4.0.3.tar.gz
+  $ tar -xzvf cli-4.0.4.tar.gz
   $ cd optima-cli
   $ ./install.sh
   ```
