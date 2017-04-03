@@ -213,6 +213,14 @@ $ optima service terminate <service-id>
 ```
 $ optima service terminate -a
 ```
+* Remove a terminated service:
+```
+$ optima service remove <service-id>
+```
+* Remove all terminated services:
+```
+$ optima service remove -a
+```
 * Show Docker cluster resources:
 ```
 $ optima host ls
@@ -264,9 +272,17 @@ $ curl http://<optima-ip>:8090/optima/services/<service-id>
 ```
 * Terminate a service:
 ```
-$ curl -X DELETE http://<optima-ip>:8090/optima/services/<service-id>
+$ curl -X POST http://<optima-ip>:8090/optima/services/<service-id>/terminate
 ```
 * Terminate all services:
+```
+$ curl -X POST http://<optima-ip>:8090/optima/services/terminate
+```
+* Remove a terminated service:
+```
+$ curl -X DELETE http://<optima-ip>:8090/optima/services/<service-id>
+```
+* Remove all terminated services:
 ```
 $ curl -X DELETE http://<optima-ip>:8090/optima/services
 ```
