@@ -1,0 +1,33 @@
+workloads:
+
+  - name: loadbalancer
+    type: CONTAINER
+    image: "nginx"
+    cpu: 1
+    memory: 256
+    ports:
+      - "80:80"
+
+  - name: database
+    type: CONTAINER
+    image: "mysql"
+    cpu: 1
+    memory: 256
+    disk: 0
+    environment:
+      - "MYSQL_ROOT_PASSWORD=my-secret-pw"
+
+  - name: webserver
+    type: CONTAINER
+    image: "tomcat"
+    cpu: 1
+    memory: 512
+    count: 4
+
+policy: 
+  name: "balance-hosts"
+
+workload_affinity_constraint:
+  - workloads:
+    - loadbalancer
+    - database
