@@ -20,8 +20,8 @@ After installing Optima, the Optima CLI can be installed separately to run Optim
 **Prerequisites**:
 * Dedicated server (virtual or physical)
 * Ubuntu 14.04 LTS
-* CPU: 8 or more
-* Memory: 16 GB or more
+* CPU: 4 or more
+* Memory: 8 GB or more
 * Storage: 50 GB or more
 
 The recommended instance type in AWS is "m4.2xlarge".
