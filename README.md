@@ -18,7 +18,7 @@ After installing Optima, the Optima CLI can be installed separately to run Optim
 ### Installing Optima
 
 **Prerequisites**:
-* Dedicated server (virtual or physical)
+* Dedicated virtual machine
 * Ubuntu 14.04 LTS
 * CPU: 4 or more
 * Memory: 8 GB or more
@@ -553,3 +553,16 @@ Contact MosaixSoft at [optima@mosaixsoft.com](mailto:optima@mosaixsoft.com)
 * Are there open source plans for Optima?  
 
   Open source is important to us, so we are being prudent about which parts of our system to release that way. Let us know at [optima@mosaixsoft.com](mailto:optima@mosaixsoft.com) if you'd like to collaborate.
+
+* How do I debug why a service has failed?
+
+  A failed service is a service that has the status 'FAILED' which indicates that at least one of the service's workloads has failed. The first thing to do is to inspect that service. If you have optima CLI installed, simply run:
+  ```
+  $ optima service inspect <id-of-the-failed-service>
+  ```
+  Or if optima CLI is not installed, you can inspect the failed service by issuing the following REST call:
+  ```
+  $ curl http://<optima-ip>:8090/optima/services/<id-of-the-failed-service>
+  ```
+
+  You can then check what went wrong and why the service failed from the inspection response. More specifically, you need then to check either the "Error Message" in that service (if the whole service failed and none of the service's workloads were provisioned) or if some of the servce's workload only failed, you could check the error message for each failed workload, which tells you why that workload failed. For further details on some of the possible error messages, please refer to: [Troubleshooting guide for Optima](../master/TROUBLESHOOTING.md).
