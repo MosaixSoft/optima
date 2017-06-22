@@ -61,7 +61,7 @@ Then, follow the following default AWS EC2 launch steps starting from step 2:
 
   1. Click **Subnet** (on the left bar) to see the list of subnets in the region where you are deploying the Optima server.
 
-  1. Click the subnet you selected in Step 3.b.
+  1. Click the subnet you selected in Step 3.
 
   1. Copy the **IPv4 CIDR** value and paste it into the **_Source_** field for the new security rule you are adding.
 
