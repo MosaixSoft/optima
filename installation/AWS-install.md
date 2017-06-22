@@ -55,7 +55,7 @@ Then, follow the following default AWS EC2 launch steps starting from step 2:
 | ------- | ---------| ---------- |---------------------------------- |
 | All TCP | TCP      | 0-65535    | Custom: `CIDR_OF_SELECTED_SUBNET` |
 
-* Replace `CIDR_OF_SELECTED_SUBNET` with the actual CIDR of the subnet you selected in Step 3.b (see above). Follow these steps to find it:
+* Replace `CIDR_OF_SELECTED_SUBNET` with the actual CIDR of the subnet you selected in Step 3 (see above). Follow these steps to find it:
 
   1. Open a separate tab in your web browser and go to: https://console.aws.amazon.com/vpc
 
