@@ -7,127 +7,17 @@ Optima is a polydimensional container scheduler for Docker. Polydimensional sche
 
 For more information about Optima: http://www.mosaixsoft.com/optima.
 
-#### Free trial
-Optima is currently offered as a free 30-day trial, limited to deploying up to 20 containers on up to 5 Docker hosts. If you wish to evaluate Optima deploying more than 20 containers or to more than 5 hosts, please contact MosaixSoft at [optima@mosaixsoft.com](mailto:optima@mosaixsoft.com).
+#### Free Edition
+The Free Edition of Optima will deploy up to 20 containers on up to 5 Docker hosts. If you wish Optima to deploy more than 20 containers or to more than 5 hosts, please contact MosaixSoft at [optima@mosaixsoft.com](mailto:optima@mosaixsoft.com).
 
 ## Installation
+Choose one of the following three ways to deploy Optima (server and CLI) and a separate 3-host Docker cloud:
+1. [Vagrant VMs](installation/Vagrant.md): Deploys Optima server and Docker hosts on a single machine as Vagrant VMs.
+1. [Bring your own VMs](installation/Installation.md): Deploys Optima server and Docker hosts on separate machines.
+1. COMING SOON!!! - [Via AWS Marketplace](installation/AWS-install.md): Deploys Optima server via the [AWS Marketplace](https://aws.amazon.com/marketplace/)
 
-Optima is installed on a dedicated server (virtual or physical) using a software installation package which can be downloaded only after registering at [http://www.mosaixsoft.com/optima](http://www.mosaixsoft.com/optima).
-After installing Optima, the Optima CLI can be installed separately to run Optima commands remotely against the Optima server.
-
-### Installing Optima
-
-**Prerequisites**:
-* Dedicated virtual machine
-* Ubuntu 14.04 LTS
-* CPU: 4 or more
-* Memory: 8 GB or more
-* Storage: 50 GB or more
-
-The recommended instance type in AWS is "m4.2xlarge".
-
-**Follow these steps**:
-
-The Ubuntu server where Optima is to be deployed must have access to the Internet to download the Optima installation software package.
-
-1. Download the software installation package to an Ubuntu server:
-
-   ```
-   $ wget <URL-to-optima-server-software-installation-package>
-   $ tar -xzvf optima_install.tgz
-   ```
-   To obtain this URL, register at [http://www.mosaixsoft.com/optima](http://www.mosaixsoft.com/optima).
-
-1. Start the installation script:
-
-   ```
-   $ cd mosaix_install
-   $ ./optima_install.sh
-   ```
-   Port 8090 must be open on the Optima server for the Optima CLI to be able to reach the Optima server remotely.
-
-The installation script downloads and installs the necessary third party components and starts the Optima server. Depending on your Internet network bandwidth, this installation may take up to 10 minutes. If the installation script did not complete, run it one more time (likely due to a timeout in the downloads).
-
-### Optima CLI installation:
-
-Install the Optima CLI to a system from where you want to launch Optima commands from.
-
-**Prerequisites**:
-* Ubuntu 14.04 (recommended) or any Linux OS
-* Python 3
-
-**Follow these steps**:
-
-  From an Ubuntu 14.04 LTS server supporting Python version 3, download and install the Optima CLI:
-
-  ```
-  $ wget <URL-to-optima-CLI-installation-package>
-  $ tar -xzvf cli-4.0.4.tar.gz
-  $ cd optima-cli
-  $ ./install.sh
-  ```
-  To obtain this URL, register at [http://www.mosaixsoft.com/optima](http://www.mosaixsoft.com/optima).
-
-## Getting started
-
-Optima must be connected to a Docker cluster with Docker hosts running Docker version 1.10 or higher. Docker Swarm is not required.
-
-#### User interfaces
-   Optima scheduling services are accessible via:
-   * [Optima CLI](#optima-cli)
-   * [Optima RESTful APIs](#optima-restful-apis)
-
-#### Networking
-   The IP address of the Optima server (*<optima_host_ip>*) must be accessible from the system where the Optima CLI is installed. Port 8090 must be open on the Optima server.
-
-   In addition, the Optima server must be able to reach the Docker hosts over IP. Optima communicates to each Docker host via the Docker Remote API which port (4342 or 2575 or custom) must be open on each Docker host that will be connected to Optima.
-
-### Connect Optima to your Docker cluster:
-
-1. **Identify the IP address of each host member of your Docker cluster**
-
-   You want to make sure those IP addresses are reachable from the Optima server. If Optima is not deployed in the same subnet/network as your Docker hosts, you want to use the public IP address of each Docker host as the endpoints.
-
-1. **Create the following _cloud.yaml_ file:**
-
-   ```yaml
-   cloud:
-      # name of the mounted cloud
-      name: cloud1
-      provider: docker
-      # username and password of the machine where optima is running
-      # The username must have the sudo privileges
-      username: mosaix
-      password: mosaix
-      # docker hosts (up to 5)
-      endpoints: http://<docker-host-ip1>:4243/, http://<docker-host-ip2>:4243/, http://<docker-host-ip3>:4243/, http://<docker-host-ip4>:4243/, http://<docker-host-ip5>:4243/
-      # CPU and memory overcommit ratios
-      cpuovercommit: 2    # (Default 1)
-      memoryovercommit: 2 # (Default 1)
-   ```
-
-   You can add up to 5 endpoints in this trial version, which correspond to the IP address of each Docker host.
-   The *cpuovercommit* and *memoryovercommit* are ratios set to define the maximum number of resources (CPU, memory) Optima is allowed to allocate per host, relative to actual amount of resources available on each host (quota = overcommit x actual).
-
-1. **Connect Optima to your Docker cluster**:
-
-   Using Optima CLI:
-
-   ```yaml
-   $ optima target
-   IP address []: <optima-host-ip>
-   Port number [8090]:
-   Target was set successfully to <optima-host-ip>:8090
-   $ optima cloud mount cloud.yaml
-   ```
-
-   Using Optima Restful API:
-
-   ```
-   $ curl -X POST --data-binary @cloud.yaml -H "Content-type: text/plain" http://<optima-host-ip>:8090/optima/cloud
-
-   {message : "Discovery for the cloud started."}
-   ```
+## Tutorial
+Once you have deployed Optima and its CLI, you can follow the Optima tutorial provided [here](tutorial.md).
 
 ## Placement strategies
 
@@ -158,7 +48,7 @@ Optionally, you can combine your placement strategy with the following supported
    * host-anti-affinity: explicitly specify the host(s) where you don't want your container to be placed
 
 ### CPU and Memory quotas on Optima
-When connecting Optima to your Docker cluster the first time, the *cpuovercommit* and *memorycommit* ratios define the maximum number of virtual CPU count and virtual memory each Docker host can be allocated by Optima:
+When connecting Optima to your Docker cloud the first time, the *cpuovercommit* and *memorycommit* ratios define the maximum number of virtual CPU count and virtual memory each Docker host can be allocated by Optima:
    * The total number of CPU per host reported by Optima is therefore the actual CPU count of each host multiplied by the *cpuovercommit* ratio.
    * The total amount of memory per host reported by Optima is the actual memory of each host multiplied by the *memorycommit* ratio.
 
@@ -189,7 +79,7 @@ $ optima cloud unmount
 ```
 $ optima cloud status
 ```
-* Submit a service to your Docker cluster via Optima:
+* Submit a service to your Docker cloud via Optima:
 ```
 $ optima service submit <yaml_file>
 ```
@@ -221,7 +111,7 @@ $ optima service remove <service-id>
 ```
 $ optima service remove -a
 ```
-* Show Docker cluster resources:
+* Show Docker cloud resources:
 ```
 $ optima host ls
 ```
@@ -229,11 +119,11 @@ $ optima host ls
 ```
 $ optima host inspect <hostname>
 ```
-* Show list of containers created in your Docker cluster (excluding terminated ones):
+* Show list of containers created in your Docker cloud (excluding terminated ones):
 ```
 $ optima container ls
 ```
-* Show list of containers created in your Docker cluster (including terminated ones):
+* Show list of containers created in your Docker cloud (including terminated ones):
 ```
 $ optima container ls -a
 ```
@@ -258,7 +148,7 @@ $ curl -X DELETE -d "password=<admin_password>" http://<optima-ip>:8090/optima/c
 ```
 $ curl http://<optima-ip>:8090/optima/cloud
 ```
-* Submit a service to your Docker cluster via Optima:
+* Submit a service to your Docker cloud via Optima:
 ```
 $ curl -X POST --data-binary @service.yaml -H "Content-type: text/plain" http://<optima-ip>:8090/optima/services
 ```
@@ -543,7 +433,7 @@ Contact MosaixSoft at [optima@mosaixsoft.com](mailto:optima@mosaixsoft.com)
 
 * Which network/subnet should I use for my containers?
 
-  By default, Optima picks the Docker's default "bridge" network. However, Optima supports any network types you created in your Docker cluster. Please refer to Docker's [online reference manual](https://docs.docker.com/engine/userguide/networking/) for more information about how to create networks. If you want to deploy your containers in a specific network, you must use the "subnet" YAML tag in your Optima service compose file.
+  By default, Optima picks the Docker's default "bridge" network. However, Optima supports any network types you created in your Docker cloud. Please refer to Docker's [online reference manual](https://docs.docker.com/engine/userguide/networking/) for more information about how to create networks. If you want to deploy your containers in a specific network, you must use the "subnet" YAML tag in your Optima service compose file.
 
 * What happens when I exceed the maximum limit of containers supported with the free trial?
 
