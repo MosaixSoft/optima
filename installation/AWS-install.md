@@ -44,7 +44,7 @@ Then, follow the following default AWS EC2 launch steps starting from step 2:
 **Step 4: Add Storage**
    * Accept default settings.
 
-**Step 5: Configure Security Group**
+**Step 5: Add Tags**
    * Accept default settings.
 
 **Step 6: Configure Security Group**
