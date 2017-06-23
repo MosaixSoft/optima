@@ -72,7 +72,7 @@ Then, follow the following default AWS EC2 launch steps starting from step 2:
   </td></tr></table>
   </p>
 
-Lastly, click on "**Review and Launch**" to accept the default settings set in the following screens...
+Lastly, click on **Review and Launch**, then **Launch** to accept the settings set in the previous screens. You can optionaly select an SSH key (new or existing).
 
 
 ## Deploying a Docker cloud in AWS
