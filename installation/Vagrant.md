@@ -17,7 +17,7 @@ The machine where Optima and the 3-host Docker cloud will be deployed must have:
      ```
      $ cd ~/optima
      ```
-  1. Download the Vagrant file ([Vagrantfile](../master/installation/Vagrantfile)) in the directory:
+  1. Download the Vagrant file ([Vagrantfile](Vagrantfile)) in the directory:
      ```
      $ wget https://github.com/MosaixSoft/optima/blob/master/installation/Vagrantfile
      ```
