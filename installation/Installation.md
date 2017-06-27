@@ -18,7 +18,7 @@ The Ubuntu server where Optima is to be deployed must have access to the Interne
 1. Download the software installation package to an Ubuntu server:
 
    ```
-   $ wget https://s3-us-west-1.amazonaws.com/optima-distribution/Optima+1.0.4/optima_install.tgz
+   $ wget https://s3-us-west-1.amazonaws.com/optima-distribution/Optima+1.0.8/optima_install.tgz
    $ tar -xzvf optima_install.tgz
    ```
 
