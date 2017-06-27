@@ -45,7 +45,7 @@ Optima's free edition allows you to control a Docker cloud with up to 5 Docker h
   1. Create a virtual machine based on a standard Ubuntu 14.04 LTS.
   1. Allow TCP connections to port 4243 from the Optima server's IP address
   1. From your favorite terminal, login via SSH to this VM:
-  1. Download the provided [docker-host-install.sh](scripts/docker-host-install.sh) bash script to this VM:
+  1. Download the provided [docker-host-install.sh](docker-host-install.sh) bash script to this VM:
 
      ```
      $ wget https://github.com/MosaixSoft/optima-staging/blob/master/scripts/docker-host-install.sh
