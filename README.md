@@ -8,13 +8,17 @@ Optima is a polydimensional container scheduler for Docker. Polydimensional sche
 For more information about Optima: http://www.mosaixsoft.com/optima.
 
 #### Free Edition
-The Free Edition of Optima will deploy up to 20 containers on up to 5 Docker hosts. If you wish Optima to deploy more than 20 containers or to more than 5 hosts, please contact MosaixSoft at [optima@mosaixsoft.com](mailto:optima@mosaixsoft.com).
+The Free Edition of Optima will deploy up to 20 containers on up to 5 Docker hosts. Install it from one of the links below, and then request a free license key by filling the form at http://www.mosaixsoft.com/optima.
+
+If you wish Optima to deploy more than 20 containers or to more than 5 hosts, please contact MosaixSoft at [optima@mosaixsoft.com](mailto:optima@mosaixsoft.com).
 
 ## Installation
 Choose one of the following three ways to deploy Optima (server and CLI) and a separate 3-host Docker cloud:
 1. [Vagrant VMs](installation/Vagrant.md): Deploys Optima server and Docker hosts on a single machine as Vagrant VMs.
 1. [Bring your own VMs](installation/Installation.md): Deploys Optima server and Docker hosts on separate machines.
 1. COMING SOON!!! - [Via AWS Marketplace](installation/AWS-install.md): Deploys Optima server via the [AWS Marketplace](https://aws.amazon.com/marketplace/)
+
+Then request a free license key by filling the form at http://www.mosaixsoft.com/optima. Thank you.
 
 ## Tutorial
 Once you have deployed Optima and its CLI, you can follow the Optima tutorial provided [here](tutorial.md).
