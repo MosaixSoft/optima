@@ -8,7 +8,7 @@ Optima is a polydimensional container scheduler for Docker. Polydimensional sche
 For more information about Optima: http://www.mosaixsoft.com/optima.
 
 #### Free Edition
-The Free Edition of Optima will deploy up to 20 containers on up to 5 Docker hosts. Install it from one of the links below, and then request a free license key by filling the form at http://www.mosaixsoft.com/optima.
+The Free Edition of Optima will deploy up to 20 containers on up to 5 Docker hosts. Install it from one of the Installation links below, and then request a free license key by filling the form at http://www.mosaixsoft.com/optima.
 
 If you wish Optima to deploy more than 20 containers or to more than 5 hosts, please contact MosaixSoft at [optima@mosaixsoft.com](mailto:optima@mosaixsoft.com).
 
