@@ -2,14 +2,32 @@
 
 The following instructions walks you through the deployment of an Optima server via the AWS Marketplace. The Optima AMI is free to use and limited to 20 containers and up to 5 docker hosts.
 
-## Deploying the Optima server
+ 1. [Deploying Optima in AWS](#deploying-the-optima-server)
+     * [1-Click Launch](#1-click-launch), or
+     * [Manual Launch](#manual-launch)
+ 1. [Deploying a Docker cloud in AWS](#deploying-a-docker-cloud-in-aws)
+ 1. [Deploying Optima client CLI](#installing-optima-client-cli)
+ 1. [Activate Optima](#activate-optima)
+ 1. [Mount the Docker cloud to Optima](#mount-the-docker-cloud-to-optima)
 
-### Prerequisites:
- * You have access to an AWS account.
+## Deploying Optima in AWS
 
-### Deploying Optima in AWS
+From the Optima listing page on the [AWS Marketplace](https://aws.amazon.com/marketplace/pp/xxxxxxxxxx), you have the option to launch the Optima server with the 1-Click or manual launch option:
 
-From the Optima listing page on the [AWS Marketplace](https://aws.amazon.com/marketplace/pp/xxxxxxxxxx):
+***Prerequisite:*** You have access to an AWS account.
+
+### 1-Click Launch
+1. Select the **1-Click Launch** tab.
+1. Select the **Region** where you want to deploy the Optima server.
+1. Pick the **VPC** and **subnet** where you want to deploy the Optima server.
+1. Pick the seller recommended default **Security Group** settings. For SSH, you may want to change the source IP or group to an IP address of a system from which you will connect to the Optima Server.
+1. Select a **key pair** you have already created via your Amazon EC2 console.
+1. Click on the **Accept Software Terms & Launch with 1-Click**
+
+**Next**: Skip the "Manual Launch" step and if you don't have a Docker cluster already setup, you can optionally deploy a multi-host Docker Cloud in AWS by following the instructions provided below in the "[Deploying a Docker cloud in AWS]((#deploying-a-docker-cloud-in-aws))"
+
+### Manual Launch
+**Step 1: Select Manual Launch**
  1. Select the **Manual Launch** tab.
  1. Click on the **Accept Software Terms** button.
  1. Click on the **Launch with the EC2 Console** for a selected AWS region of your choice
@@ -72,7 +90,7 @@ Then, follow the following default AWS EC2 launch steps starting from step 2:
   </td></tr></table>
   </p>
 
-Lastly, click on **Review and Launch**, then **Launch** to accept the settings set in the previous screens. You can optionaly select an SSH key (new or existing).
+Lastly, click on **Review and Launch**, then **Launch** to accept the settings set in the previous screens. You can optionally select an SSH key (new or existing).
 
 
 ## Deploying a Docker cloud in AWS
@@ -132,7 +150,7 @@ Alternatively you can use the [Optima REST API](../README.md#optima-restful-apis
 Follow the instruction in [here](activation.md) to activate Optima.
 
 
-## Mounting the Docker cloud:
+## Mount the Docker cloud to Optima
 This section includes instructions to mount the Docker cloud using the installed CLI and to verify that the cloud is mounted and ready to be used.
 The IP address of the Optima server (*<optima_host_ip>*) must be accessible from the system where the Optima CLI is installed. Port 8090 must be open on the Optima server.
 
